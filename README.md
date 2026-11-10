@@ -10,8 +10,11 @@ Current deliverable: **high-fidelity mockups** of the redesigned site. Tech stac
 - [ ] Define goals, audience, and primary call to action
 - [ ] Benchmark comparable law firm sites
 - [ ] Information architecture + sitemap
-- [ ] Low-fidelity wireframes
-- [ ] High-fidelity mockups (home, practice area, attorney bio, contact — in EN / 繁 / 简)
+- [x] Homepage concept — Western style
+- [x] Homepage concept — Hong Kong style
+- [x] Practice-area detail page
+- [ ] Attorney profile + contact pages
+- [ ] Chinese-language versions of approved layouts
 
 ## Repository layout
 
@@ -19,6 +22,10 @@ Current deliverable: **high-fidelity mockups** of the redesigned site. Tech stac
 | :--- | :--- |
 | `docs/content-inventory.md` | Source-of-truth record of the existing site's content |
 | `docs/audit.md` | Audit of the current site, including the HTTPS certificate issue |
+| `docs/roadmap.md` | Suggested next steps and talking points |
+| `mockups/home/` | Homepage concept — Western / international style |
+| `mockups/home-hk/` | Homepage concept — Hong Kong style (bilingual, skyline, blue + gold) |
+| `mockups/practice-detail/` | Practice-area detail page (Civil Litigation example) |
 
 ## Key facts
 
