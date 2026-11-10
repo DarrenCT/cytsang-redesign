@@ -10,22 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root {
+    color-scheme: light;
     --ink: #0f1d38; --ink-2: #16294d;
     --brass: #b4894f; --brass-soft: #c9a86a;
     --paper: #faf8f3; --paper-2: #f2ede3; --card: #ffffff;
     --text: #1e2733; --head: #0f1d38; --muted: #5c6673; --line: #e4ddce;
     --serif: "Cormorant Garamond", "Noto Serif TC", Georgia, serif;
     --sans: "Inter", system-ui, -apple-system, sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #0e1626; --paper-2: #121d31; --card: #16223a;
-      --text: #e8ebf0; --head: #f2f4f8; --muted: #9aa6b6; --line: #27334b;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #0e1626; --paper-2: #121d31; --card: #16223a;
-    --text: #e8ebf0; --head: #f2f4f8; --muted: #9aa6b6; --line: #27334b;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }

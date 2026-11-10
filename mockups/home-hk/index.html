@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
+    color-scheme: light;
     --blue: #0a3c5e;         /* deep corporate blue */
     --blue-2: #0e4f7a;
     --blue-deep: #072b44;
@@ -24,16 +25,6 @@
     --line: #dde1e8;
     --serif: "Noto Serif TC", Georgia, serif;
     --sans: "Inter", "Noto Sans TC", system-ui, sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #0b1420; --paper-2: #0f1b2b; --card: #13223455;
-      --card: #142234; --text: #dde4ec; --head: #eaf1f8; --muted: #93a1b3; --line: #243448;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #0b1420; --paper-2: #0f1b2b; --card: #142234;
-    --text: #dde4ec; --head: #eaf1f8; --muted: #93a1b3; --line: #243448;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }

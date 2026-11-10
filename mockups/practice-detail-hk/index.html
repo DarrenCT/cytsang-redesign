@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HK Practice Detail Concept</title>
+<meta name="description" content="Hong Kong-style practice-area detail page concept for C.Y. Tsang & Co., Solicitors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --blue: #0a3c5e; --blue-2: #0e4f7a; --blue-deep: #072b44;
+    --gold: #c6a15b; --gold-soft: #d8bd82;
+    --paper: #f5f6f8; --paper-2: #eceef2; --card: #ffffff;
+    --text: #263241; --head: #0a3c5e; --muted: #5d6775; --line: #dde1e8;
+    --serif: "Noto Serif TC", Georgia, serif;
+    --sans: "Inter", "Noto Sans TC", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--sans); color: var(--text); background: var(--paper); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3 { font-family: var(--serif); font-weight: 600; line-height: 1.22; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .zh { font-family: var(--serif); }
+
+  /* Utility bar */
+  .util { background: var(--blue-deep); color: #cdd7e2; font-size: 12.5px; }
+  .util .wrap { display: flex; align-items: center; justify-content: space-between; height: 38px; }
+  .util .l { display: flex; gap: 20px; align-items: center; }
+  .util .l a:hover { color: #fff; }
+  .util .tel b { color: var(--gold-soft); letter-spacing: 0.03em; }
+  .util .r { display: flex; gap: 16px; align-items: center; }
+  .util .lang { display: flex; gap: 7px; }
+  .util .lang b { color: #fff; } .util .lang span { color: #4a5f74; }
+  .util .ic { display: inline-flex; width: 16px; height: 16px; opacity: .8; }
+  .util .ic:hover { opacity: 1; }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--card) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand .mark { width: 42px; height: 42px; flex: 0 0 42px; border-radius: 3px; background: linear-gradient(140deg, var(--blue-2), var(--blue-deep)); display: flex; align-items: center; justify-content: center; border: 1px solid var(--gold); }
+  .brand .mark span { font-family: var(--serif); color: var(--gold-soft); font-size: 22px; font-weight: 700; }
+  .brand .zhname { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--head); letter-spacing: 0.14em; line-height: 1; }
+  .brand .enname { font-size: 11px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; margin-top: 5px; }
+  nav.main { display: flex; gap: 28px; align-items: center; }
+  nav.main a { font-size: 14.5px; font-weight: 500; color: var(--text); display: flex; flex-direction: column; align-items: center; gap: 1px; }
+  nav.main a .en { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+  nav.main a .zh { font-family: var(--serif); }
+  nav.main a:hover .zh, nav.main a.active .zh { color: var(--gold); }
+  .btn { display: inline-block; background: var(--gold); color: #3a2c10; padding: 11px 20px; border-radius: 2px; font-size: 13.5px; font-weight: 600; border: 1px solid var(--gold); transition: background .2s, color .2s; cursor: pointer; }
+  .btn:hover { background: transparent; color: var(--gold); }
+  .btn.o { background: transparent; color: #fff; border-color: rgba(255,255,255,.55); }
+  .btn.o:hover { background: #fff; color: var(--blue); border-color: #fff; }
+  .btn.block { display: block; text-align: center; width: 100%; }
+  .menu-toggle { display: none; color: var(--head); font-size: 26px; background: none; border: none; }
+
+  /* Sub-hero */
+  .subhero { background: linear-gradient(160deg, var(--blue-2), var(--blue) 55%, var(--blue-deep)); color: #fff; position: relative; overflow: hidden; }
+  .subhero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(760px 340px at 85% -10%, rgba(198,161,91,.24), transparent 62%); }
+  .subhero .wrap { position: relative; z-index: 2; padding: 50px 24px 60px; }
+  .crumb { font-size: 13px; color: #aeb7c6; margin-bottom: 20px; }
+  .crumb a:hover { color: var(--gold-soft); }
+  .crumb span { color: #5b7088; margin: 0 8px; }
+  .subhero .eyebrow { font-size: 12.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 14px; }
+  .subhero h1 { font-size: clamp(30px, 5vw, 48px); color: #fff; letter-spacing: 0.05em; }
+  .subhero h1 .en { display: block; font-family: var(--sans); font-size: clamp(15px, 2vw, 19px); font-weight: 500; letter-spacing: 0.03em; color: #cdd8e4; margin-top: 10px; }
+  .subhero p { font-size: 16px; color: #d6dee8; max-width: 62ch; margin: 18px 0 0; }
+
+  /* Body layout */
+  .layout { display: grid; grid-template-columns: 1fr 336px; gap: 54px; padding: 64px 0 20px; }
+  .prose h2 { font-size: 26px; color: var(--head); letter-spacing: 0.04em; margin: 0 0 6px; }
+  .prose h2 .en { display: block; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  .prose h2:not(:first-child) { margin-top: 46px; }
+  .prose p { color: var(--text); font-size: 16px; margin: 16px 0 0; }
+
+  .handle { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 22px 0 0; padding: 0; list-style: none; }
+  .handle li { background: var(--card); padding: 14px 18px; font-size: 15px; }
+  .handle li .en { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+  .step { background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 3px; padding: 22px; }
+  .step .n { font-family: var(--serif); font-size: 15px; color: var(--gold); letter-spacing: 0.18em; margin-bottom: 8px; }
+  .step h3 { font-size: 19px; color: var(--head); letter-spacing: 0.04em; margin-bottom: 6px; }
+  .step h3 .en { font-family: var(--sans); font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; margin-left: 6px; }
+  .step p { font-size: 13.5px; color: var(--muted); margin: 0; }
+
+  .faq { margin-top: 22px; border-top: 1px solid var(--line); }
+  .faq details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+  .faq summary { font-family: var(--serif); font-size: 19px; color: var(--head); letter-spacing: 0.03em; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--gold); font-family: var(--sans); }
+  .faq details[open] summary::after { content: "–"; }
+  .faq p { font-size: 15px; color: var(--muted); margin: 12px 0 0; }
+
+  /* Sidebar */
+  .side { align-self: start; position: sticky; top: 100px; display: flex; flex-direction: column; gap: 20px; }
+  .side-card { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 24px; }
+  .side-card.dark { background: linear-gradient(150deg, var(--blue-2), var(--blue-deep)); border: 1px solid var(--gold); color: #fff; }
+  .side-card.dark h3 { color: #fff; font-size: 21px; letter-spacing: 0.04em; }
+  .side-card.dark p { color: #cdd8e4; font-size: 14px; margin: 10px 0 18px; }
+  .side-card h3 { font-size: 16px; color: var(--head); letter-spacing: 0.06em; }
+  .side-card h3 .en { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-left: 6px; }
+  .related { list-style: none; margin: 14px 0 0; padding: 0; }
+  .related li { border-top: 1px solid var(--line); }
+  .related li:first-child { border-top: none; }
+  .related a { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; font-size: 14.5px; color: var(--text); }
+  .related a:hover { color: var(--gold); }
+  .related a .zh { font-family: var(--serif); }
+  .related a .ar { color: var(--gold); }
+  .contacts { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; }
+  .ct { display: flex; gap: 13px; align-items: center; }
+  .ct .av { flex: 0 0 44px; height: 44px; border-radius: 3px; background: linear-gradient(135deg, var(--blue-2), var(--blue-deep)); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 18px; color: var(--gold-soft); }
+  .ct .nm { font-family: var(--serif); font-size: 15px; color: var(--head); font-weight: 600; letter-spacing: 0.02em; }
+  .ct .rl { font-size: 12px; color: var(--muted); }
+
+  /* CTA band */
+  .band { background: linear-gradient(150deg, var(--blue-2), var(--blue-deep)); color: #fff; margin-top: 36px; }
+  .band .wrap { padding: 54px 24px; display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+  .band h2 { font-size: clamp(22px, 3.2vw, 32px); color: #fff; letter-spacing: 0.05em; }
+  .band .en-h { font-family: var(--sans); font-size: 14px; color: #c6d2df; margin-top: 8px; }
+
+  /* Footer */
+  footer { background: var(--blue-deep); color: #b9c6d4; }
+  footer .wrap { padding: 44px 24px; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; }
+  footer .zhname { font-family: var(--serif); font-size: 21px; color: #fff; letter-spacing: 0.12em; }
+  footer .enname { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-soft); margin: 6px 0 16px; }
+  footer p { font-size: 13px; color: #9fb0c0; margin: 0 0 6px; }
+  footer h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-soft); margin: 0 0 14px; }
+  footer nav { display: flex; flex-direction: column; gap: 9px; font-size: 14px; }
+  footer .copy { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.1); padding-top: 18px; font-size: 12px; color: #7e90a2; }
+  .ribbon { background: var(--gold); color: #3a2c10; text-align: center; font-size: 12.5px; letter-spacing: 0.06em; padding: 7px 16px; font-weight: 600; }
+
+  @media (max-width: 920px) { .layout { grid-template-columns: 1fr; gap: 10px; } .side { position: static; margin-top: 36px; } footer .wrap { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 860px) { nav.main, .bar .btn { display: none; } .menu-toggle { display: inline-flex; } }
+  @media (max-width: 560px) { .handle, .steps { grid-template-columns: 1fr; } footer .wrap { grid-template-columns: 1fr; } .util .l .hide-s { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="ribbon">重新設計概念 · Redesign concept — C.Y. Tsang &amp; Co. · practice-area detail · for internal review</div>
+
+<!-- Utility bar -->
+<div class="util">
+  <div class="wrap">
+    <div class="l">
+      <span class="tel">電話 Tel: <b>3583 2601</b></span>
+      <a class="hide-s" href="#">info@cytsang.com</a>
+    </div>
+    <div class="r">
+      <span class="lang"><b>中文</b><span>|</span>繁<span>|</span>简<span>|</span>EN</span>
+      <a href="#" class="ic" aria-label="WeChat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 4C4.9 4 2 6.5 2 9.6c0 1.7.9 3.2 2.4 4.2L3.8 16l2.2-1.1c.8.2 1.6.3 2.5.3h.6a5 5 0 0 1-.1-1c0-3 2.9-5.3 6.3-5.3h.6C15.7 6 12.4 4 8.5 4Zm-2 3.1a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Zm4.8 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8ZM16 10c-3 0-5.5 2.1-5.5 4.7 0 2.6 2.5 4.7 5.5 4.7.7 0 1.4-.1 2-.3l1.9.9-.5-1.6c1.2-.9 2-2.2 2-3.7C21.4 12.1 19 10 16 10Zm-1.8 3a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5Zm3.6 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5Z"/></svg></a>
+      <a href="#" class="ic" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <div class="mark"><span>曾</span></div>
+      <div>
+        <div class="zhname">曾重瑜律師事務所</div>
+        <div class="enname">C.Y. Tsang &amp; Co., Solicitors</div>
+      </div>
+    </div>
+    <nav class="main">
+      <a href="#"><span class="zh">關於本行</span><span class="en">The Firm</span></a>
+      <a href="#" class="active"><span class="zh">業務範疇</span><span class="en">Practice</span></a>
+      <a href="#"><span class="zh">專業團隊</span><span class="en">Our People</span></a>
+      <a href="#"><span class="zh">法律資訊</span><span class="en">Insights</span></a>
+      <a href="#"><span class="zh">聯絡我們</span><span class="en">Contact</span></a>
+    </nav>
+    <a href="#contact" class="btn">預約諮詢 · Consult</a>
+    <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  </div>
+</header>
+
+<!-- Sub-hero -->
+<section class="subhero">
+  <div class="wrap">
+    <div class="crumb"><a href="#">首頁 Home</a><span>/</span><a href="#">業務範疇 Practice</a><span>/</span>民事訴訟</div>
+    <div class="eyebrow">業務範疇 · Practice Area</div>
+    <h1 class="zh">民事訴訟及爭議解決<span class="en">Civil Litigation &amp; Dispute Resolution</span></h1>
+    <p>於香港法院及審裁處提供務實的訴訟代理，由複雜商業糾紛以至建築、仲裁及遺產爭議。Pragmatic representation across Hong Kong's courts and tribunals — from complex commercial disputes to construction, arbitration, and contentious probate.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="layout">
+    <div class="prose">
+      <h2 class="zh">概覽<span class="en">Overview</span></h2>
+      <p>訴訟往往耗費成本、分散精力，而且鮮有簡單直接的情況。我們的訴訟律師專注於對您最重要的結果，無論是和解、有利判決，還是讓您迅速了結、重新出發的方案。</p>
+      <p>We act for PRC state-owned enterprises, multinational corporations, and individuals, bringing the same care to a high-value commercial claim as to a personal matter. At every stage we give you a clear, honest view of where you stand and what each option is likely to cost.</p>
+
+      <h2 class="zh">我們處理的事務<span class="en">Matters we handle</span></h2>
+      <ul class="handle">
+        <li>複雜商業糾紛<span class="en">Complex commercial disputes</span></li>
+        <li>建築糾紛及仲裁<span class="en">Construction disputes &amp; arbitration</span></li>
+        <li>遺產爭議<span class="en">Contentious probate</span></li>
+        <li>股東及合夥糾紛<span class="en">Shareholder &amp; partnership disputes</span></li>
+        <li>保險索償<span class="en">Insurance claims</span></li>
+        <li>業主與租客糾紛<span class="en">Landlord &amp; tenant disputes</span></li>
+        <li>貨物買賣糾紛<span class="en">Sale of goods disputes</span></li>
+        <li>追討債務、破產及清盤<span class="en">Debt recovery, bankruptcy &amp; winding up</span></li>
+      </ul>
+
+      <h2 class="zh">我們的方針<span class="en">Our approach</span></h2>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><h3 class="zh">評估<span class="en">Assess</span></h3><p>坦誠分析案情、勝算、風險及預計成本。</p></div>
+        <div class="step"><div class="n">02</div><h3 class="zh">制定策略<span class="en">Strategise</span></h3><p>圍繞您的商業目標，而非單純法律立場制定策略。</p></div>
+        <div class="step"><div class="n">03</div><h3 class="zh">解決<span class="en">Resolve</span></h3><p>適合和解時爭取和解，必要時堅定應訴。</p></div>
+      </div>
+
+      <h2 class="zh">常見問題<span class="en">Common questions</span></h2>
+      <div class="faq">
+        <details open><summary>在香港提出民事申索需時多久？</summary><p>視乎案件複雜程度及能否和解而定。許多糾紛會在審訊前解決；我們會在開始時提供務實的時間預估，並隨案件進展更新。</p></details>
+        <details><summary>我的糾紛是否一定要上法庭？</summary><p>大多數情況毋須如此。我們會積極探討調解及和解，往往更快捷、成本更低，只在適當時才循審訊途徑處理。</p></details>
+        <details><summary>你們能處理中英文的法律程序嗎？</summary><p>可以。我們以英語、粵語及普通話提供意見及出庭，並以三種語言擬備文件。</p></details>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="side-card dark">
+        <h3 class="zh">與我們的團隊聯絡</h3>
+        <p>簡述您的事務，我們會安排諮詢。Tell us about your matter and we'll arrange a consultation.</p>
+        <a href="#contact" class="btn block">預約諮詢 Request a Consultation</a>
+      </div>
+      <div class="side-card">
+        <h3 class="zh">主要聯絡律師<span class="en">Key contacts</span></h3>
+        <div class="contacts">
+          <div class="ct"><div class="av">曾</div><div><div class="nm">曾重瑜律師</div><div class="rl">Principal 主理律師</div></div></div>
+          <div class="ct"><div class="av">關</div><div><div class="nm">關婉儀律師</div><div class="rl">Senior Associate 高級律師</div></div></div>
+        </div>
+      </div>
+      <div class="side-card">
+        <h3 class="zh">相關業務範疇<span class="en">Related</span></h3>
+        <ul class="related">
+          <li><a href="#"><span class="zh">公司及商業</span> <span class="ar">&rarr;</span></a></li>
+          <li><a href="#"><span class="zh">破產及清盤</span> <span class="ar">&rarr;</span></a></li>
+          <li><a href="#"><span class="zh">僱傭</span> <span class="ar">&rarr;</span></a></li>
+          <li><a href="#"><span class="zh">知識產權</span> <span class="ar">&rarr;</span></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- CTA band -->
+<section class="band" id="contact">
+  <div class="wrap">
+    <div>
+      <h2 class="zh">正面對糾紛？歡迎與我們聯絡。</h2>
+      <div class="en-h">Have a dispute on your hands? Speak with our litigation team.</div>
+    </div>
+    <a href="#" class="btn o">預約諮詢 Request a Consultation</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="zhname">曾重瑜律師事務所</div>
+      <div class="enname">C.Y. Tsang &amp; Co., Solicitors</div>
+      <p>香港上環德輔道中257號<br>金生大廈23樓（上環港鐵站B出口上蓋）</p>
+      <p>23/F, Kam Sang Building, 257 Des Voeux Road Central, Sheung Wan, Hong Kong</p>
+    </div>
+    <div>
+      <h4>聯絡 Contact</h4>
+      <p>電話 Tel: 3583 2601</p>
+      <p>傳真 Fax: 3583 2604</p>
+      <p>電郵: info@cytsang.com</p>
+    </div>
+    <div>
+      <h4>快速連結 Links</h4>
+      <nav>
+        <a href="#">關於本行 The Firm</a>
+        <a href="#">業務範疇 Practice</a>
+        <a href="#">專業團隊 People</a>
+        <a href="#">聯絡我們 Contact</a>
+      </nav>
+    </div>
+    <div class="copy">© 2007–2026 曾重瑜律師事務所 C.Y. Tsang &amp; Co., Solicitors. 版權所有 All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
