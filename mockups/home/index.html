@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C.Y. Tsang Redesign</title>
+<meta name="description" content="Homepage redesign concept for C.Y. Tsang & Co., Solicitors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1d38;
+    --ink-2: #16294d;
+    --brass: #b4894f;
+    --brass-soft: #c9a86a;
+    --paper: #faf8f3;
+    --paper-2: #f2ede3;
+    --card: #ffffff;
+    --text: #1e2733;
+    --head: #0f1d38;
+    --muted: #5c6673;
+    --line: #e4ddce;
+    --serif: "Cormorant Garamond", "Noto Serif TC", Georgia, serif;
+    --sans: "Inter", system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1626;
+      --paper-2: #121d31;
+      --card: #16223a;
+      --text: #e8ebf0;
+      --head: #f2f4f8;
+      --muted: #9aa6b6;
+      --line: #27334b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0e1626; --paper-2: #121d31;
+    --card: #16223a; --text: #e8ebf0; --head: #f2f4f8; --muted: #9aa6b6; --line: #27334b;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; margin: 0; letter-spacing: 0.01em; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { display: flex; flex-direction: column; line-height: 1; }
+  .brand .en { font-family: var(--serif); font-size: 23px; font-weight: 700; color: var(--head); letter-spacing: 0.04em; }
+  .brand .en b { color: var(--brass); font-weight: 700; }
+  .brand .zh { font-family: var(--serif); font-size: 13px; color: var(--muted); letter-spacing: 0.32em; margin-top: 3px; }
+  nav.main { display: flex; gap: 30px; align-items: center; }
+  nav.main a { font-size: 14px; font-weight: 500; color: var(--text); letter-spacing: 0.02em; }
+  nav.main a:hover { color: var(--brass); }
+  .lang { display: flex; gap: 8px; align-items: center; font-size: 12.5px; color: var(--muted); }
+  .lang b { color: var(--head); }
+  .lang span { color: var(--line); }
+  .btn {
+    display: inline-block; background: var(--brass); color: #fff;
+    padding: 11px 20px; border-radius: 2px; font-size: 13.5px; font-weight: 600;
+    letter-spacing: 0.03em; border: 1px solid var(--brass);
+    transition: background .2s, color .2s;
+  }
+  .btn:hover { background: transparent; color: var(--brass); }
+  .btn.ghost { background: transparent; color: var(--head); border-color: var(--line); }
+  .btn.ghost:hover { border-color: var(--brass); color: var(--brass); }
+  .btn.light { background: transparent; color: #fff; border-color: rgba(255,255,255,.45); }
+  .btn.light:hover { background: #fff; color: var(--ink); border-color: #fff; }
+  .menu-toggle { display: none; color: var(--head); }
+
+  /* Hero */
+  .hero { position: relative; background: var(--ink); color: #fff; overflow: hidden; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(1200px 500px at 78% -10%, rgba(180,137,79,.28), transparent 60%),
+      linear-gradient(180deg, var(--ink-2), var(--ink));
+  }
+  .hero .wrap { position: relative; z-index: 2; padding: 92px 24px 100px; }
+  .eyebrow { font-size: 12.5px; letter-spacing: 0.34em; text-transform: uppercase; color: var(--brass-soft); margin-bottom: 22px; }
+  .hero h1 { font-size: clamp(38px, 6vw, 68px); color: #fff; max-width: 15ch; }
+  .hero p.lede { font-size: clamp(16px, 2vw, 19px); color: #d6dbe4; max-width: 56ch; margin: 24px 0 34px; }
+  .hero .cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero .est { margin-top: 56px; display: flex; gap: 40px; flex-wrap: wrap; color: #aeb7c6; font-size: 13.5px; }
+  .hero .est b { display: block; font-family: var(--serif); font-size: 30px; color: #fff; font-weight: 600; line-height: 1; margin-bottom: 6px; }
+
+  /* Section scaffolding */
+  section.block { padding: 84px 0; }
+  .sec-head { max-width: 62ch; margin-bottom: 46px; }
+  .sec-head .eyebrow { color: var(--brass); }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 40px); color: var(--head); }
+  .sec-head p { color: var(--muted); font-size: 16.5px; margin: 16px 0 0; }
+  .alt { background: var(--paper-2); }
+
+  /* Practice grid */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .pcard {
+    background: var(--card); border: 1px solid var(--line); border-radius: 3px;
+    padding: 26px 24px; transition: transform .18s, box-shadow .18s, border-color .18s;
+  }
+  .pcard:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(15,29,56,.1); border-color: var(--brass-soft); }
+  .pcard .ic { width: 34px; height: 34px; color: var(--brass); margin-bottom: 16px; }
+  .pcard h3 { font-size: 22px; color: var(--head); }
+  .pcard p { font-size: 14.5px; color: var(--muted); margin: 9px 0 0; }
+  .more-areas { margin-top: 26px; font-size: 14.5px; color: var(--muted); }
+  .more-areas b { color: var(--head); font-weight: 600; }
+
+  /* People */
+  .people { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .person { display: flex; gap: 20px; background: var(--card); border: 1px solid var(--line); border-radius: 3px; padding: 24px; }
+  .avatar {
+    flex: 0 0 76px; height: 76px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--ink-2), var(--brass));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 26px; color: #fff; font-weight: 600;
+  }
+  .person h3 { font-size: 21px; color: var(--head); }
+  .person .role { font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brass); margin: 4px 0 10px; }
+  .person p { font-size: 14px; color: var(--muted); margin: 0; }
+
+  /* CTA band */
+  .band { background: var(--ink); color: #fff; }
+  .band .wrap { padding: 66px 24px; display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+  .band h2 { font-size: clamp(26px, 3.5vw, 36px); color: #fff; max-width: 20ch; }
+  .band p { color: #c3cad6; margin: 12px 0 0; max-width: 46ch; }
+
+  /* Contact */
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .info-row { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .info-row .k { flex: 0 0 90px; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass); padding-top: 3px; }
+  .info-row .v { font-size: 15.5px; color: var(--text); }
+  form .field { margin-bottom: 16px; }
+  form label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 7px; letter-spacing: 0.02em; }
+  form input, form textarea {
+    width: 100%; padding: 12px 14px; font-family: var(--sans); font-size: 15px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 2px; color: var(--text);
+  }
+  form input:focus, form textarea:focus { outline: none; border-color: var(--brass); }
+
+  /* Footer */
+  footer { background: var(--ink-2); color: #c3cad6; }
+  footer .wrap { padding: 44px 24px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer .en { font-family: var(--serif); font-size: 19px; color: #fff; letter-spacing: 0.04em; }
+  footer small { display: block; color: #8d97a8; margin-top: 10px; font-size: 12.5px; }
+  footer nav { display: flex; gap: 22px; font-size: 14px; }
+
+  /* Mockup banner */
+  .ribbon {
+    background: var(--brass); color: #fff; text-align: center;
+    font-size: 12.5px; letter-spacing: 0.08em; padding: 7px 16px; font-weight: 500;
+  }
+
+  @media (max-width: 860px) {
+    nav.main, .lang.desk, .bar .btn { display: none; }
+    .menu-toggle { display: inline-flex; font-size: 26px; color: var(--ink); background: none; border: none; cursor: pointer; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .people, .contact { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+    .hero .wrap { padding: 64px 24px 72px; }
+    .hero .est { gap: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">Redesign concept — C.Y. Tsang &amp; Co. · for internal review, not the live site</div>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <span class="en">C.Y. <b>Tsang</b> &amp; Co.</span>
+      <span class="zh">曾重瑜律師事務所</span>
+    </div>
+    <nav class="main">
+      <a href="#about">The Firm</a>
+      <a href="#practice">Practice Areas</a>
+      <a href="#people">Our People</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex; gap:18px; align-items:center;">
+      <div class="lang desk"><b>EN</b><span>|</span>繁<span>|</span>简</div>
+      <a href="#contact" class="btn">Request a Consultation</a>
+    </div>
+    <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Solicitors · Hong Kong · Since 2007</div>
+    <h1>Considered legal counsel for complex disputes.</h1>
+    <p class="lede">C.Y. Tsang &amp; Co. represents corporations, institutions, and individuals across Hong Kong's courts — resolving matters quickly, efficiently, and with a clear path to the most workable outcome.</p>
+    <div class="cta">
+      <a href="#contact" class="btn light">Request a Consultation</a>
+      <a href="#practice" class="btn light" style="border-color:rgba(255,255,255,.25)">Explore Our Practice</a>
+    </div>
+    <div class="est">
+      <div><b>2007</b>Established in Hong Kong</div>
+      <div><b>15+</b>Areas of practice</div>
+      <div><b>3</b>Languages served · EN · 繁 · 简</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The Firm</div>
+      <h2>A litigation practice built on clear, cost-effective advice.</h2>
+      <p>Founded in Hong Kong in 2007, C.Y. Tsang &amp; Co. acts for PRC state-owned enterprises, multinational corporations, and individuals alike — from complex commercial disputes to personal injury and criminal matters. Our commitment is simple: solve the problem, and solve it well.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section class="block alt" id="practice">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Practice Areas</div>
+      <h2>Where we act for our clients.</h2>
+      <p>Our lawyers handle both contentious and non-contentious matters across a broad range of disciplines.</p>
+    </div>
+    <div class="grid">
+      <div class="pcard">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v18M5 7l7-4 7 4M4 21h16M6 11l-2 6h4l-2-6zM18 11l-2 6h4l-2-6z"/></svg>
+        <h3>Civil Litigation &amp; Dispute Resolution</h3>
+        <p>Complex commercial disputes, construction, arbitration, and contentious probate.</p>
+      </div>
+      <div class="pcard">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h16v14H4zM4 9h16M9 13h6"/></svg>
+        <h3>Corporate &amp; Commercial</h3>
+        <p>Joint ventures, restructuring, commercial agreements, loan and IP documentation.</p>
+      </div>
+      <div class="pcard">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <h3>Family &amp; Matrimonial</h3>
+        <p>Matrimonial proceedings, children matters, and related financial disputes.</p>
+      </div>
+      <div class="pcard">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l3 6 6 .5-4.5 4 1.5 6-6-3.5-6 3.5 1.5-6L3 8.5 9 8z"/></svg>
+        <h3>Intellectual Property</h3>
+        <p>Copyright, design, patent, and trademark disputes — contentious and advisory.</p>
+      </div>
+      <div class="pcard">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 4h8l2 4H6zM6 8v12h12V8M10 12h4"/></svg>
+        <h3>Personal Injury &amp; Compensation</h3>
+        <p>Accident claims and employees' compensation, acting for victims and the legally aided.</p>
+      </div>
+      <div class="pcard">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 2h9l3 3v17H6zM9 8h6M9 12h6M9 16h4"/></svg>
+        <h3>Notarial &amp; Attesting Services</h3>
+        <p>China-Appointed Attesting Officer and Notary Public services for cross-border needs.</p>
+      </div>
+    </div>
+    <p class="more-areas">Also advising on <b>conveyancing &amp; property</b>, <b>employment</b>, <b>immigration</b>, <b>insolvency &amp; bankruptcy</b>, <b>trust</b>, <b>wills &amp; probate</b>, and <b>criminal litigation</b>.</p>
+  </div>
+</section>
+
+<!-- PEOPLE -->
+<section class="block" id="people">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Our People</div>
+      <h2>Experienced counsel, admitted across jurisdictions.</h2>
+    </div>
+    <div class="people">
+      <div class="person">
+        <div class="avatar">T</div>
+        <div>
+          <h3>Mr. Tsang Chung Yu</h3>
+          <div class="role">Principal</div>
+          <p>Admitted in Hong Kong (1995). LLM, University of London. China-Appointed Attesting Officer, Notary Public, and Civil Celebrant of Marriages. Broad litigation and advisory practice.</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="avatar">K</div>
+        <div>
+          <h3>Ms. Christina Kwan</h3>
+          <div class="role">Senior Associate</div>
+          <p>Admitted in Hong Kong (1995) and the United Kingdom (1997). LLM, University of London. Focus on contentious and non-contentious intellectual property, probate, and conveyancing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band">
+  <div class="wrap">
+    <div>
+      <h2>Facing a dispute, or planning ahead?</h2>
+      <p>Speak with our team about your matter. We'll give you a clear, practical view of where you stand and what comes next.</p>
+    </div>
+    <a href="#contact" class="btn light">Request a Consultation</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="block alt" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Contact</div>
+      <h2>Arrange a consultation.</h2>
+      <p>Our office sits directly above Sheung Wan MTR Station, in the heart of Central.</p>
+    </div>
+    <div class="contact">
+      <div>
+        <div class="info-row"><div class="k">Office</div><div class="v">23/F, Kam Sang Building<br>No. 257 Des Voeux Road Central<br>Sheung Wan, Hong Kong<br><span style="color:var(--muted); font-size:13.5px;">Above Sheung Wan MTR Station, Exit B</span></div></div>
+        <div class="info-row"><div class="k">Telephone</div><div class="v">3583 2601</div></div>
+        <div class="info-row"><div class="k">Fax</div><div class="v">3583 2604</div></div>
+        <div class="info-row"><div class="k">Email</div><div class="v">info@cytsang.com</div></div>
+      </div>
+      <form onsubmit="return false">
+        <div class="field"><label>Name</label><input type="text" placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
+        <div class="field"><label>How can we help?</label><textarea rows="4" placeholder="Briefly describe your matter"></textarea></div>
+        <button class="btn" type="submit">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="en">C.Y. Tsang &amp; Co., Solicitors</div>
+      <small>曾重瑜律師事務所 · Established in Hong Kong, 2007</small>
+      <small>© 2007–2026 C.Y. Tsang &amp; Co., Solicitors. All rights reserved.</small>
+    </div>
+    <nav>
+      <a href="#about">The Firm</a>
+      <a href="#practice">Practice</a>
+      <a href="#people">People</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
