@@ -147,6 +147,34 @@
   @media (max-width: 1000px) { .pgrid { grid-template-columns: repeat(2, 1fr); } .ins { grid-template-columns: 1fr; } .about { grid-template-columns: 1fr; gap: 32px; } .people { grid-template-columns: 1fr; } footer .wrap { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 860px) { nav.main, .bar .btn, .util .l .sep2 { display: none; } .menu-toggle { display: inline-flex; } }
   @media (max-width: 560px) { .pgrid { grid-template-columns: 1fr; } .util .l .hide-s { display: none; } footer .wrap { grid-template-columns: 1fr; } }
+  /* v2 refinements */
+  [id] { scroll-margin-top: 96px; }
+  .pgrid a.pcell { display: block; border-top: 2px solid transparent; }
+  .pcell:hover { border-top-color: var(--gold); }
+  .pcell .ar { opacity: .3; }
+  .pcell.cta, .pcell.cta:hover { background: linear-gradient(150deg, var(--blue-2), var(--blue-deep)); border-top-color: var(--gold); }
+  .pcell.cta .zh { color: #fff; } .pcell.cta .en { color: var(--gold-soft); } .pcell.cta .ar { color: var(--gold-soft); opacity: 1; }
+  .person p.enline { font-size: 12.5px; margin-top: 6px; }
+  .team-more { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+  .tm { background: var(--card); border: 1px solid var(--line); border-radius: 3px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
+  .tm .av { flex: 0 0 44px; height: 44px; border-radius: 3px; background: var(--paper-2); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-family: var(--serif); color: var(--head); font-size: 18px; font-weight: 600; }
+  .tm .nm { font-family: var(--serif); font-size: 16.5px; color: var(--head); font-weight: 600; letter-spacing: 0.03em; }
+  .tm .rl { font-size: 12px; color: var(--muted); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .info-row { display: flex; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+  .info-row:first-child { padding-top: 0; }
+  .info-row .k { flex: 0 0 96px; font-size: 12.5px; letter-spacing: 0.06em; color: var(--gold); padding-top: 3px; font-weight: 600; }
+  .info-row .v { font-size: 15.5px; }
+  .info-row .v small { display: block; color: var(--muted); font-size: 13px; }
+  .mapbox { margin-top: 20px; height: 150px; border: 1px solid var(--line); border-radius: 3px; background: repeating-linear-gradient(135deg, var(--paper-2), var(--paper-2) 12px, var(--paper) 12px, var(--paper) 24px); display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--muted); }
+  .form { background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 3px; padding: 28px; }
+  .form .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form .field { margin-bottom: 14px; }
+  .form label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .form input, .form textarea, .form select { width: 100%; padding: 11px 13px; font-family: var(--sans); font-size: 15px; border: 1px solid var(--line); border-radius: 2px; background: var(--paper); color: var(--text); }
+  .form input:focus, .form textarea:focus, .form select:focus { outline: none; border-color: var(--gold); }
+  @media (max-width: 1000px) { .team-more, .contact-grid { grid-template-columns: 1fr; } .team-more { gap: 12px; } .contact-grid { gap: 32px; } }
+  @media (max-width: 560px) { .form .two { grid-template-columns: 1fr; gap: 0; } .form { padding: 20px; } .info-row .k { flex-basis: 78px; } }
 </style>
 </head>
 <body>
@@ -161,7 +189,7 @@
       <a class="hide-s" href="#">info@cytsang.com</a>
     </div>
     <div class="r">
-      <span class="lang"><b>中文</b><span>|</span>繁<span>|</span>简<span>|</span>EN</span>
+      <span class="lang"><b>繁</b><span>|</span>简<span>|</span>EN</span>
       <a href="#" class="ic" aria-label="WeChat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 4C4.9 4 2 6.5 2 9.6c0 1.7.9 3.2 2.4 4.2L3.8 16l2.2-1.1c.8.2 1.6.3 2.5.3h.6a5 5 0 0 1-.1-1c0-3 2.9-5.3 6.3-5.3h.6C15.7 6 12.4 4 8.5 4Zm-2 3.1a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Zm4.8 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8ZM16 10c-3 0-5.5 2.1-5.5 4.7 0 2.6 2.5 4.7 5.5 4.7.7 0 1.4-.1 2-.3l1.9.9-.5-1.6c1.2-.9 2-2.2 2-3.7C21.4 12.1 19 10 16 10Zm-1.8 3a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5Zm3.6 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5Z"/></svg></a>
       <a href="#" class="ic" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></a>
     </div>
@@ -179,13 +207,13 @@
       </div>
     </div>
     <nav class="main">
-      <a href="#"><span class="zh">關於本行</span><span class="en">The Firm</span></a>
-      <a href="#" class="active"><span class="zh">業務範疇</span><span class="en">Practice</span></a>
-      <a href="#"><span class="zh">專業團隊</span><span class="en">Our People</span></a>
-      <a href="#"><span class="zh">法律資訊</span><span class="en">Insights</span></a>
-      <a href="#"><span class="zh">聯絡我們</span><span class="en">Contact</span></a>
+      <a href="#about"><span class="zh">本所介紹</span><span class="en">The Firm</span></a>
+      <a href="#practice"><span class="zh">業務範圍</span><span class="en">Practice</span></a>
+      <a href="#people"><span class="zh">成員</span><span class="en">Our People</span></a>
+      <a href="#insights"><span class="zh">法律資訊</span><span class="en">Insights</span></a>
+      <a href="#contact"><span class="zh">聯絡我們</span><span class="en">Contact</span></a>
     </nav>
-    <a href="#" class="btn">預約諮詢 · Consult</a>
+    <a href="#contact" class="btn">預約諮詢 · Consult</a>
     <button class="menu-toggle" aria-label="Menu">&#9776;</button>
   </div>
 </header>
@@ -198,8 +226,8 @@
     <h1 class="zh">為每一位客戶，<br>尋求最<span class="accent">切實可行</span>的解決方案。</h1>
     <p class="en-sub">Trusted Hong Kong legal counsel since 2007. We act for PRC state-owned enterprises, multinational corporations, and individuals — resolving matters quickly, efficiently, and cost-effectively.</p>
     <div class="cta">
-      <a href="#" class="btn">預約諮詢 Request a Consultation</a>
-      <a href="#practice" class="btn o">業務範疇 Our Practice</a>
+      <a href="#contact" class="btn">預約諮詢 Request a Consultation</a>
+      <a href="#practice" class="btn o">業務範圍 Our Practice</a>
     </div>
   </div>
   <!-- Victoria Harbour skyline silhouette -->
@@ -240,16 +268,18 @@
       <rect x="1320" y="118" width="46" height="112"/>
       <rect x="1388" y="150" width="52" height="80"/>
     </g>
+    <g fill="#d8bd82" fill-opacity="0.6"><rect x="369" y="84" width="3" height="4"/><rect x="369" y="110" width="3" height="4"/><rect x="369" y="136" width="3" height="4"/><rect x="369" y="162" width="3" height="4"/><rect x="369" y="188" width="3" height="4"/><rect x="369" y="214" width="3" height="4"/><rect x="393" y="97" width="3" height="4"/><rect x="393" y="123" width="3" height="4"/><rect x="393" y="149" width="3" height="4"/><rect x="393" y="175" width="3" height="4"/><rect x="393" y="201" width="3" height="4"/><rect x="577" y="68" width="3" height="4"/><rect x="577" y="94" width="3" height="4"/><rect x="577" y="120" width="3" height="4"/><rect x="577" y="146" width="3" height="4"/><rect x="577" y="172" width="3" height="4"/><rect x="577" y="198" width="3" height="4"/><rect x="601" y="81" width="3" height="4"/><rect x="601" y="107" width="3" height="4"/><rect x="601" y="133" width="3" height="4"/><rect x="601" y="159" width="3" height="4"/><rect x="601" y="185" width="3" height="4"/><rect x="601" y="211" width="3" height="4"/><rect x="1205" y="84" width="3" height="4"/><rect x="1205" y="110" width="3" height="4"/><rect x="1205" y="136" width="3" height="4"/><rect x="1205" y="162" width="3" height="4"/><rect x="1205" y="188" width="3" height="4"/><rect x="1205" y="214" width="3" height="4"/><rect x="217" y="123" width="3" height="4"/><rect x="217" y="149" width="3" height="4"/><rect x="217" y="175" width="3" height="4"/><rect x="217" y="201" width="3" height="4"/><rect x="241" y="110" width="3" height="4"/><rect x="241" y="136" width="3" height="4"/><rect x="241" y="162" width="3" height="4"/><rect x="241" y="188" width="3" height="4"/><rect x="241" y="214" width="3" height="4"/><rect x="727" y="137" width="3" height="4"/><rect x="727" y="163" width="3" height="4"/><rect x="727" y="189" width="3" height="4"/><rect x="727" y="215" width="3" height="4"/><rect x="883" y="127" width="3" height="4"/><rect x="883" y="153" width="3" height="4"/><rect x="883" y="179" width="3" height="4"/><rect x="883" y="205" width="3" height="4"/><rect x="1037" y="134" width="3" height="4"/><rect x="1037" y="160" width="3" height="4"/><rect x="1037" y="186" width="3" height="4"/><rect x="1037" y="212" width="3" height="4"/><rect x="1061" y="147" width="3" height="4"/><rect x="1061" y="173" width="3" height="4"/><rect x="1061" y="199" width="3" height="4"/><rect x="1335" y="132" width="3" height="4"/><rect x="1335" y="158" width="3" height="4"/><rect x="1335" y="184" width="3" height="4"/><rect x="1335" y="210" width="3" height="4"/><rect x="63" y="142" width="3" height="4"/><rect x="63" y="168" width="3" height="4"/><rect x="63" y="194" width="3" height="4"/><rect x="507" y="147" width="3" height="4"/><rect x="507" y="173" width="3" height="4"/><rect x="507" y="199" width="3" height="4"/><rect x="531" y="134" width="3" height="4"/><rect x="531" y="160" width="3" height="4"/><rect x="531" y="186" width="3" height="4"/><rect x="531" y="212" width="3" height="4"/></g>
+    <rect x="0" y="227" width="1440" height="3" fill="#c6a15b" fill-opacity="0.45"/>
   </svg>
 </section>
 
 <!-- Credentials strip -->
 <div class="creds" style="background: var(--blue-deep);">
   <div class="wrap">
-    <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 4-3.5 7-8 9-4.5-2-8-5-8-9V7z"/></svg><span><b>Est. 2007</b> · 香港</span></div>
-    <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2h9l3 3v17H6z"/><path d="M9 11h6M9 15h4"/></svg><span><b>China-Appointed Attesting Officer</b> 中國委托公證人</span></div>
-    <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M12 12v9M8 21h8"/></svg><span><b>Notary Public</b> 公證人</span></div>
-    <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span><b>EN · 粵 · 普</b> trilingual service</span></div>
+    <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 4-3.5 7-8 9-4.5-2-8-5-8-9V7z"/></svg><span><b>2007年成立</b> Established in Hong Kong</span></div>
+    <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2h9l3 3v17H6z"/><path d="M9 11h6M9 15h4"/></svg><span><b>中國委托公証人</b> China-Appointed Attesting Officer</span></div>
+    <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M12 12v9M8 21h8"/></svg><span><b>國際公証人</b> Notary Public</span></div>
+    <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg><span><b>婚姻監禮人</b> Civil Celebrant of Marriages</span></div>
   </div>
 </div>
 
@@ -257,55 +287,59 @@
 <section class="block" id="practice">
   <div class="wrap">
     <div class="head2">
-      <div class="eyebrow">業務範疇</div>
-      <h2>我們的服務範疇<span class="en">Our areas of practice</span></h2>
-      <p>本行律師處理訴訟及非訟事務，涵蓋商業、民事及刑事等廣泛範疇。We handle both contentious and non-contentious matters across a broad range of disciplines.</p>
+      <div class="eyebrow">業務範圍</div>
+      <h2>我們的業務範圍<span class="en">Our areas of practice</span></h2>
+      <p>本事務所為商業及個人客戶提供廣泛及多元化的法律服務。We provide a wide range of legal services to both corporate and individual clients.</p>
     </div>
     <div class="pgrid">
-      <div class="pcell"><div class="zh">民事訴訟</div><div class="en">Civil Litigation &amp; Dispute Resolution</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">公司及商業</div><div class="en">Corporate &amp; Commercial</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">刑事訴訟</div><div class="en">Criminal Litigation</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">家事及婚姻</div><div class="en">Family &amp; Matrimonial</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">知識產權</div><div class="en">Intellectual Property</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">人身傷亡及僱員補償</div><div class="en">Personal Injury &amp; Compensation</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">物業轉易</div><div class="en">Conveyancing &amp; Property</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">僱傭</div><div class="en">Employment</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">破產及清盤</div><div class="en">Insolvency &amp; Bankruptcy</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">遺囑及遺產承辦</div><div class="en">Wills &amp; Probate</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">公證及中國委托公證</div><div class="en">Notarial &amp; Attesting Services</div><div class="ar">&rarr;</div></div>
-      <div class="pcell"><div class="zh">信託</div><div class="en">Trust</div><div class="ar">&rarr;</div></div>
+      <a href="#" class="pcell"><div class="zh">中國公証服務</div><div class="en">China Attesting Services</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">婚姻監禮</div><div class="en">Civil Celebrant of Marriages</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">民事訴訟及調解爭議</div><div class="en">Civil Litigation and Dispute Resolution</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">房地產事務</div><div class="en">Conveyancing and Property</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">公司及商業</div><div class="en">Corporate and Commercial</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">刑事訴訟</div><div class="en">Criminal Litigation</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">僱傭、私隱及歧視</div><div class="en">Employment, Privacy and Discrimination</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">家事及婚姻程序</div><div class="en">Family and Matrimonial</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">移民及入境簽證</div><div class="en">Immigration</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">清盤及破產</div><div class="en">Insolvency and Bankruptcy</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">知識產權</div><div class="en">Intellectual Property</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">人身傷亡及僱員賠償</div><div class="en">Personal Injury and Employees' Compensation</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">國際公証服務</div><div class="en">Notary Public Services</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">信托</div><div class="en">Trust</div><div class="ar">&rarr;</div></a>
+      <a href="#" class="pcell"><div class="zh">遺囑及遺產承辦</div><div class="en">Wills and Probate</div><div class="ar">&rarr;</div></a>
+      <a href="#contact" class="pcell cta"><div class="zh">預約諮詢</div><div class="en">Request a consultation</div><div class="ar">&rarr;</div></a>
     </div>
   </div>
 </section>
 
 <!-- About -->
-<section class="block alt">
+<section class="block alt" id="about">
   <div class="wrap about">
     <div>
       <h2 class="zh">以務實、高效的法律服務，<br>贏得客戶信賴。</h2>
       <div class="en-h">About the firm</div>
-      <p>曾重瑜律師事務所於二〇〇七年在香港成立，客戶包括國有企業、跨國公司及個人。我們致力以最具成本效益、切實可行的方案，為客戶迅速解決問題。</p>
-      <p>Founded in Hong Kong in 2007, C.Y. Tsang &amp; Co. is a litigation-led practice committed to clear, cost-effective advice — from complex commercial disputes to personal injury and criminal matters.</p>
+      <p>曾重瑜律師事務所是由曾重瑜先生於2007年在香港成立。本事務所對客戶的承諾是為客戶迅速地及有效地解決問題。我們的目標是致力為客戶提供最具成本效益和可行的解決方案。</p>
+      <p>Founded in Hong Kong in 2007 by Mr. C. Y. Tsang, the firm is committed to solving problems for its clients quickly, efficiently, and effectively, with the most cost-effective and workable solution.</p>
     </div>
     <div class="panel">
       <div class="big">2007</div>
       <div class="lbl">於香港成立 · Established in Hong Kong</div>
       <hr>
       <ul>
-        <li>服務語言 — 英語 · 粵語 · 普通話</li>
-        <li>中國委托公證人 · 公證人</li>
-        <li>逾 15 個業務範疇</li>
-        <li>上環港鐵站上蓋，交通便捷</li>
+        <li>中國委托公証人 · 國際公証人 · 婚姻監禮人</li>
+        <li>15 個業務範圍，涵蓋訴訟及非訴訟事務</li>
+        <li>客戶包括中國國有企業、跨國公司及個人</li>
+        <li>上環港鐵站B出口樓上</li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- People -->
-<section class="block">
+<section class="block" id="people">
   <div class="wrap">
     <div class="head2">
-      <div class="eyebrow">專業團隊</div>
+      <div class="eyebrow">成員</div>
       <h2>我們的律師<span class="en">Our people</span></h2>
     </div>
     <div class="people">
@@ -314,7 +348,8 @@
         <div>
           <div class="nm">曾重瑜律師 · Mr. Tsang Chung Yu</div>
           <div class="role">Principal 主管律師</div>
-          <p>香港執業律師（1995）。倫敦大學法學碩士。中國委托公證人、公證人及婚姻監禮人。處理廣泛訴訟及商業事務。</p>
+          <p>1995年獲香港執業資格。英國倫敦大學法律碩士（優異）。中國委託公証人、國際公証人及婚姻監禮人。負責處理不同的訴訟案件，亦處理商業事務及遺產承辦的工作。</p>
+          <p class="enline">Admitted in Hong Kong, 1995. LLM (Merit), University of London.</p>
         </div>
       </div>
       <div class="person">
@@ -322,15 +357,21 @@
         <div>
           <div class="nm">關婉儀律師 · Ms. Christina Kwan</div>
           <div class="role">Senior Associate 高級律師</div>
-          <p>香港（1995）及英國（1997）執業律師。倫敦大學法學碩士。專注知識產權、遺產承辦及物業轉易事務。</p>
+          <p>1995年獲香港執業資格，1997年獲英國執業資格。英國倫敦大學法律碩士。主要負責處理知識產權事務，亦處理遺囑認證、訴訟案件、商業和樓宇買賣的工作。</p>
+          <p class="enline">Admitted in Hong Kong (1995) and the United Kingdom (1997). LLM, University of London.</p>
         </div>
       </div>
+    </div>
+    <div class="team-more">
+      <div class="tm"><div class="av">陳</div><div><div class="nm">陳維寧律師</div><div class="rl">Ms. Chan Wai Ling · 顧問律師 Consultant</div></div></div>
+      <div class="tm"><div class="av">李</div><div><div class="nm">李碧娟律師</div><div class="rl">Ms. Lee Pik Kuen Anne · 顧問律師 Consultant</div></div></div>
+      <div class="tm"><div class="av">甘</div><div><div class="nm">甘皓婷律師</div><div class="rl">Ms. Kam Ho Ting Tiffany · 律師 Associate</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- Insights -->
-<section class="block alt">
+<section class="block alt" id="insights">
   <div class="wrap">
     <div class="head2">
       <div class="eyebrow">法律資訊</div>
@@ -345,6 +386,35 @@
   </div>
 </section>
 
+<!-- Contact -->
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="head2">
+      <div class="eyebrow">聯絡我們</div>
+      <h2>預約諮詢<span class="en">Arrange a consultation</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="info-row"><div class="k">地址 Office</div><div class="v">香港上環德輔道中257號錦甡大廈23樓<small>23/F, Kam Sang Building, 257 Des Voeux Road Central, Sheung Wan</small><small>上環港鐵站B出口樓上 · Above Sheung Wan MTR Station Exit B</small></div></div>
+        <div class="info-row"><div class="k">電話 Tel</div><div class="v">3583 2601</div></div>
+        <div class="info-row"><div class="k">傳真 Fax</div><div class="v">3583 2604</div></div>
+        <div class="info-row"><div class="k">電郵 Email</div><div class="v">info@cytsang.com</div></div>
+        <div class="mapbox">地圖位置 Map placeholder</div>
+      </div>
+      <form class="form" onsubmit="return false">
+        <div class="two">
+          <div class="field"><label>姓名 Name</label><input type="text"></div>
+          <div class="field"><label>電話 Telephone</label><input type="tel"></div>
+        </div>
+        <div class="field"><label>電郵 Email</label><input type="email"></div>
+        <div class="field"><label>查詢事項 Area of enquiry</label><select><option>請選擇 Please select</option><option>中國公証服務</option><option>婚姻監禮</option><option>民事訴訟及調解爭議</option><option>房地產事務</option><option>公司及商業</option><option>刑事訴訟</option><option>僱傭、私隱及歧視</option><option>家事及婚姻程序</option><option>移民及入境簽證</option><option>清盤及破產</option><option>知識產權</option><option>人身傷亡及僱員賠償</option><option>國際公証服務</option><option>信托</option><option>遺囑及遺產承辦</option></select></div>
+        <div class="field"><label>內容 Message</label><textarea rows="4"></textarea></div>
+        <button class="btn" type="submit">提交查詢 Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="band">
   <div class="wrap">
@@ -352,7 +422,7 @@
       <h2 class="zh">需要法律協助？歡迎與我們聯絡。</h2>
       <div class="en-h">Facing a legal matter? Speak with our team today.</div>
     </div>
-    <a href="#" class="btn o">預約諮詢 Request a Consultation</a>
+    <a href="#contact" class="btn o">致電 Call 3583 2601</a>
   </div>
 </section>
 
@@ -362,7 +432,7 @@
     <div>
       <div class="zhname">曾重瑜律師事務所</div>
       <div class="enname">C.Y. Tsang &amp; Co., Solicitors</div>
-      <p>香港上環德輔道中257號<br>錦甡大廈23樓（上環港鐵站B出口上蓋）</p>
+      <p>香港上環德輔道中257號<br>錦甡大廈23樓（上環港鐵站B出口樓上）</p>
       <p>23/F, Kam Sang Building, 257 Des Voeux Road Central, Sheung Wan, Hong Kong</p>
     </div>
     <div>
@@ -374,10 +444,10 @@
     <div>
       <h4>快速連結 Links</h4>
       <nav>
-        <a href="#">關於本行 The Firm</a>
-        <a href="#practice">業務範疇 Practice</a>
-        <a href="#">專業團隊 People</a>
-        <a href="#">聯絡我們 Contact</a>
+        <a href="#about">本所介紹 The Firm</a>
+        <a href="#practice">業務範圍 Practice</a>
+        <a href="#people">成員 People</a>
+        <a href="#contact">聯絡我們 Contact</a>
       </nav>
     </div>
     <div class="copy">© 2007–2026 曾重瑜律師事務所 C.Y. Tsang &amp; Co., Solicitors. 版權所有 All rights reserved.</div>
