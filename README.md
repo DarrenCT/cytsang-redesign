@@ -12,7 +12,7 @@ Current deliverable: **high-fidelity mockups** of the redesigned site. Tech stac
 - [ ] Information architecture + sitemap
 - [x] Homepage concept — Western style
 - [x] Homepage concept — Hong Kong style
-- [x] Practice-area detail page
+- [x] Practice-area detail page (both styles)
 - [ ] Attorney profile + contact pages
 - [ ] Chinese-language versions of approved layouts
 
@@ -25,7 +25,10 @@ Current deliverable: **high-fidelity mockups** of the redesigned site. Tech stac
 | `docs/roadmap.md` | Suggested next steps and talking points |
 | `mockups/home/` | Homepage concept — Western / international style |
 | `mockups/home-hk/` | Homepage concept — Hong Kong style (bilingual, skyline, blue + gold) |
-| `mockups/practice-detail/` | Practice-area detail page (Civil Litigation example) |
+| `mockups/practice-detail/` | Practice-area detail page — Western style (Civil Litigation example) |
+| `mockups/practice-detail-hk/` | Practice-area detail page — Hong Kong style (Civil Litigation example) |
+
+All pages are locked to a light theme with dark navy/blue accents (hero, CTA band, footer).
 
 ## Key facts
 
