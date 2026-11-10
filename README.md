@@ -25,6 +25,7 @@ Current deliverable: **high-fidelity mockups** of the redesigned site. Tech stac
 | `docs/roadmap.md` | Suggested next steps and talking points |
 | `mockups/home/` | Homepage concept — Western / international style |
 | `mockups/home-hk/` | Homepage concept — Hong Kong style (bilingual, skyline, blue + gold) |
+| `mockups/home-local/` | Homepage concept — local Hong Kong Chinese firm style (Chinese-first, maroon, dense portal layout) |
 | `mockups/practice-detail/` | Practice-area detail page — Western style (Civil Litigation example) |
 | `mockups/practice-detail-hk/` | Practice-area detail page — Hong Kong style (Civil Litigation example) |
 

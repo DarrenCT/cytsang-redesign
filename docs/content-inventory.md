@@ -93,3 +93,15 @@ Flat list of 15 service areas (no descriptions):
 - **No contact form and no map embed** on the Contact page.
 - **No trust signals** beyond credentials: no testimonials, case results, or recognitions.
 - **Trilingual parity** must be maintained across EN / 繁 / 简 for every new page.
+
+---
+
+## Chinese-language source text (from `/tc/`, captured 2026-11-10)
+
+Use the firm's own wording in Chinese layouts rather than fresh translations.
+
+- **Navigation:** 本所介紹 / 成員 / 業務範圍 / 連結 / 聯絡我們
+- **Address:** 香港上環德輔道中257號錦甡大廈23樓（上環港鐵站B出口樓上）
+- **Members:** 曾重瑜律師（主管律師）; 關婉儀律師（高級律師）; 陳維寧律師（顧問律師）; 李碧娟律師（顧問律師）; 甘皓婷律師（律師）
+- **Qualifications:** 中國委託公証人 / 國際公証人 / 婚姻監禮人
+- **Practice areas:** 中國公証服務, 婚姻監禮, 民事訴訟及調解爭議, 房地產事務, 公司及商業, 刑事訴訟, 僱傭、私隱及歧視, 家事及婚姻程序, 移民及入境簽證, 清盤及破產, 知識產權, 人身傷亡及僱員賠償, 國際公証服務, 信托, 遺囑及遺產承辦

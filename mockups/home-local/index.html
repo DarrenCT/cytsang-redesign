@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C.Y. Tsang Local Concept</title>
+<meta name="description" content="Local Hong Kong Chinese firm style homepage concept for C.Y. Tsang & Co., Solicitors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --red: #8c1c22;
+    --red-dark: #6a1217;
+    --red-tint: #f7ecec;
+    --gold: #b8914a;
+    --gold-tint: #f6efe0;
+    --bg: #f5f2ec;
+    --card: #ffffff;
+    --text: #333333;
+    --muted: #777777;
+    --line: #e1dacd;
+    --sans: "Noto Sans TC", "PingFang HK", "Microsoft JhengHei", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--sans); font-size: 15px; color: var(--text); background: var(--bg); line-height: 1.75; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3, h4, p { margin: 0; }
+  .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  .en { font-family: Arial, Helvetica, sans-serif; }
+
+  .ribbon { background: #333; color: #fff; text-align: center; font-size: 12px; padding: 5px 16px; }
+
+  /* Top strip */
+  .strip { background: #ece7de; border-bottom: 1px solid var(--line); font-size: 13px; color: #555; }
+  .strip .wrap { display: flex; justify-content: space-between; align-items: center; min-height: 34px; gap: 12px; flex-wrap: wrap; }
+  .strip b { color: var(--red); }
+  .strip .lang a { padding: 0 8px; border-left: 1px solid #bbb; }
+  .strip .lang a:first-child { border-left: none; }
+  .strip .lang .on { color: var(--red); font-weight: 700; }
+
+  /* Logo row */
+  .top { background: var(--card); }
+  .top .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; padding-bottom: 16px; gap: 20px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 14px; }
+  .seal { width: 58px; height: 58px; flex: 0 0 58px; background: var(--red); color: #fff; font-size: 34px; font-weight: 900; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: inset 0 0 0 3px var(--red), inset 0 0 0 4px rgba(255,255,255,.75); }
+  .logo .zh { font-size: 30px; font-weight: 900; letter-spacing: 0.1em; color: #222; line-height: 1.15; }
+  .logo .enn { font-family: Arial, sans-serif; font-size: 12.5px; letter-spacing: 0.14em; color: var(--red); font-weight: 700; margin-top: 3px; }
+  .hotline { display: flex; align-items: center; gap: 12px; }
+  .hotline .ico { width: 44px; height: 44px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; color: #fff; }
+  .hotline .ico svg { width: 22px; height: 22px; }
+  .hotline small { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.3; }
+  .hotline strong { display: block; font-family: Arial, sans-serif; font-size: 28px; color: var(--red); line-height: 1.15; letter-spacing: 0.02em; }
+
+  /* Nav */
+  .nav { background: var(--red); border-bottom: 3px solid var(--gold); }
+  .nav .wrap { display: flex; overflow-x: auto; }
+  .nav a { color: #fff; font-size: 16px; font-weight: 500; padding: 13px 26px; white-space: nowrap; border-right: 1px solid rgba(255,255,255,.16); }
+  .nav a:first-child { border-left: 1px solid rgba(255,255,255,.16); }
+  .nav a.on, .nav a:hover { background: var(--red-dark); }
+
+  /* Banner */
+  .banner { margin-top: 16px; }
+  .banner .box { display: grid; grid-template-columns: 1.15fr 1fr; background: var(--card); border: 1px solid var(--line); }
+  .banner .txt { padding: 34px 34px 28px; background: linear-gradient(135deg, #fff 0%, var(--gold-tint) 100%); border-right: 1px solid var(--line); }
+  .banner .tag { display: inline-block; background: var(--red); color: #fff; font-size: 13px; padding: 2px 12px; margin-bottom: 14px; }
+  .banner h1 { font-size: clamp(26px, 3.6vw, 38px); font-weight: 900; color: #222; line-height: 1.35; letter-spacing: 0.04em; }
+  .banner h1 em { font-style: normal; color: var(--red); }
+  .banner .sub { margin-top: 12px; font-size: 16px; color: #444; }
+  .banner ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; font-size: 14.5px; }
+  .banner li::before { content: "✓"; color: var(--red); font-weight: 700; margin-right: 8px; }
+  .banner .btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .b { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; font-size: 16px; font-weight: 700; border-radius: 4px; border: 2px solid var(--red); }
+  .b.red { background: var(--red); color: #fff; }
+  .b.line { background: #fff; color: var(--red); }
+  .banner .pic { position: relative; min-height: 300px; background: #d9d4ca; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+  .banner .pic svg { width: 100%; height: 100%; position: absolute; inset: 0; }
+  .banner .pic .cap { position: relative; z-index: 2; width: 100%; background: rgba(106,18,23,.88); color: #fff; font-size: 14px; padding: 8px 16px; text-align: center; }
+  .banner .ph { position: absolute; top: 12px; right: 12px; z-index: 2; background: rgba(255,255,255,.9); border: 1px dashed #999; font-size: 12px; color: #555; padding: 2px 10px; }
+
+  /* Notice */
+  .notice { margin-top: 12px; }
+  .notice .box { background: #fffbe9; border: 1px solid #ead9a0; font-size: 14px; padding: 8px 14px; display: flex; gap: 10px; }
+  .notice b { color: var(--red); white-space: nowrap; }
+
+  /* Quick tiles */
+  .tiles { margin-top: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .tile { display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--red); padding: 14px 14px; }
+  .tile:nth-child(2) { border-left-color: var(--gold); }
+  .tile:nth-child(3) { border-left-color: #2f6b55; }
+  .tile:nth-child(4) { border-left-color: #2d5a8c; }
+  .tile svg { width: 34px; height: 34px; flex: 0 0 34px; color: var(--red); }
+  .tile:nth-child(2) svg { color: var(--gold); } .tile:nth-child(3) svg { color: #2f6b55; } .tile:nth-child(4) svg { color: #2d5a8c; }
+  .tile h3 { font-size: 16.5px; font-weight: 700; color: #222; line-height: 1.35; }
+  .tile span { font-size: 12.5px; color: var(--muted); }
+  .tile:hover { background: var(--red-tint); }
+
+  /* Three columns */
+  .cols { margin-top: 16px; display: grid; grid-template-columns: 250px 1fr 310px; gap: 16px; align-items: start; }
+  .panel { background: var(--card); border: 1px solid var(--line); }
+  .panel + .panel { margin-top: 16px; }
+  .ptitle { display: flex; justify-content: space-between; align-items: center; background: var(--red); color: #fff; padding: 9px 14px; font-size: 17px; font-weight: 700; letter-spacing: 0.06em; }
+  .ptitle small { font-family: Arial, sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.08em; opacity: .85; }
+  .stitle { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--red); padding: 12px 16px 8px; }
+  .stitle h2 { font-size: 19px; font-weight: 700; color: #222; padding-left: 10px; border-left: 5px solid var(--red); line-height: 1.2; letter-spacing: 0.04em; }
+  .stitle a { font-size: 13px; color: var(--red); }
+  .pbody { padding: 14px 16px 16px; }
+  .pbody p + p { margin-top: 10px; }
+  .pbody h4 { font-size: 15.5px; color: var(--red); margin: 14px 0 4px; }
+
+  .svc { list-style: none; margin: 0; padding: 0; }
+  .svc li a { display: flex; justify-content: space-between; padding: 8px 14px; border-bottom: 1px dotted #cfc7b8; font-size: 15px; }
+  .svc li:last-child a { border-bottom: none; }
+  .svc li a::after { content: "›"; color: var(--red); font-weight: 700; }
+  .svc li a:hover { background: var(--red-tint); color: var(--red); }
+
+  .member { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px dotted #cfc7b8; }
+  .member:last-child { border-bottom: none; padding-bottom: 0; }
+  .member .ph { flex: 0 0 76px; height: 92px; background: #e6e1d8; border: 1px solid var(--line); display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+  .member .ph svg { width: 64px; height: 76px; color: #b9b2a5; }
+  .member h3 { font-size: 16.5px; font-weight: 700; color: #222; }
+  .member h3 span { font-size: 13px; font-weight: 500; color: #fff; background: var(--gold); padding: 1px 8px; margin-left: 8px; vertical-align: 2px; }
+  .member p { font-size: 13.5px; color: #555; line-height: 1.65; margin-top: 4px; }
+  .others { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .others span { font-size: 14px; background: var(--bg); border: 1px solid var(--line); padding: 4px 12px; }
+  .others span b { color: var(--red); font-weight: 500; font-size: 12.5px; margin-left: 6px; }
+
+  .news { list-style: none; margin: 0; padding: 0; }
+  .news li { padding: 9px 0; border-bottom: 1px dotted #cfc7b8; font-size: 14.5px; line-height: 1.55; }
+  .news li:last-child { border-bottom: none; }
+  .news .d { display: inline-block; font-size: 11.5px; color: var(--red); border: 1px solid var(--red); padding: 0 6px; margin-right: 6px; line-height: 1.6; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: 52px 1fr; gap: 6px 8px; font-size: 14.5px; }
+  .contact dt { color: var(--red); font-weight: 700; }
+  .contact dd { margin: 0; }
+  .map { margin-top: 12px; height: 120px; background: repeating-linear-gradient(45deg, #ece7de, #ece7de 10px, #e4ded2 10px, #e4ded2 20px); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 13px; color: #777; }
+  .contact .b { width: 100%; justify-content: center; margin-top: 12px; font-size: 15px; padding: 9px 12px; }
+
+  /* Values */
+  .values { margin-top: 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--gold); border: 1px solid var(--gold); }
+  .val { background: var(--red); color: #fff; padding: 22px 22px; text-align: center; }
+  .val b { display: block; font-size: 24px; font-weight: 900; letter-spacing: 0.3em; margin-right: -0.3em; }
+  .val span { display: block; font-size: 14px; opacity: .9; margin-top: 4px; }
+
+  /* Qualifications */
+  .quals { margin-top: 16px; }
+  .quals .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 16px; }
+  .q { border: 1px solid var(--gold); background: var(--gold-tint); padding: 14px; text-align: center; }
+  .q b { display: block; font-size: 17px; color: #222; }
+  .q span { font-family: Arial, sans-serif; font-size: 12px; color: #776a4c; letter-spacing: 0.04em; }
+
+  /* Footer */
+  footer { margin-top: 22px; background: var(--red-dark); color: #ead9d9; font-size: 14px; border-top: 4px solid var(--gold); }
+  footer .wrap { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 24px; padding-top: 26px; padding-bottom: 20px; }
+  footer h4 { color: #fff; font-size: 16px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,.2); }
+  footer a { display: block; padding: 2px 0; }
+  footer a:hover { color: #fff; }
+  .copy { background: #4f0c10; color: #c9b0b0; font-size: 12.5px; text-align: center; padding: 10px 16px; }
+
+  /* Floating enquiry */
+  .float { position: fixed; right: 0; top: 46%; z-index: 40; display: flex; flex-direction: column; gap: 2px; }
+  .float a { background: var(--red); color: #fff; width: 58px; padding: 9px 4px; text-align: center; font-size: 12.5px; line-height: 1.3; border-radius: 6px 0 0 6px; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+  .float a:nth-child(2) { background: var(--gold); }
+  .float a:nth-child(3) { background: #555; }
+  .float svg { width: 20px; height: 20px; display: block; margin: 0 auto 2px; }
+
+  @media (max-width: 980px) {
+    .cols { grid-template-columns: 1fr 1fr; }
+    .cols > .c-mid { grid-column: 1 / -1; order: -1; }
+    .tiles { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) {
+    .banner .box, .cols, .values, .quals .row, footer .wrap { grid-template-columns: 1fr; }
+    .banner .txt { border-right: none; padding: 24px 18px; }
+    .banner ul { grid-template-columns: 1fr; }
+    .logo .zh { font-size: 23px; }
+    .seal { width: 48px; height: 48px; flex-basis: 48px; font-size: 28px; }
+    .nav a { padding: 11px 16px; font-size: 15px; }
+    .float { display: none; }
+  }
+  @media (max-width: 460px) { .tiles { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="ribbon">網站重新設計概念（本地律師行風格）· Redesign concept for internal review — not the live site</div>
+
+<div class="strip">
+  <div class="wrap">
+    <div>歡迎瀏覽曾重瑜律師事務所網站　|　查詢電話：<b>3583 2601</b>　|　電郵：info@cytsang.com</div>
+    <div class="lang"><a class="on" href="#">繁體中文</a><a href="#">简体中文</a><a class="en" href="#">English</a></div>
+  </div>
+</div>
+
+<div class="top">
+  <div class="wrap">
+    <div class="logo">
+      <div class="seal">曾</div>
+      <div>
+        <div class="zh">曾重瑜律師事務所</div>
+        <div class="enn">C.Y. TSANG &amp; CO., SOLICITORS</div>
+      </div>
+    </div>
+    <div class="hotline">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.100.4 2.300.6 3.600.6.600 0 1 .4 1 1V20c0 .600-.4 1-1 1C10.600 21 3 13.400 3 4c0-.6.4-1 1-1h3.500c.600 0 1 .4 1 1 0 1.300.2 2.500.6 3.600.1.300 0 .700-.2 1z"/></svg></div>
+      <div>
+        <small>查詢熱線（上環港鐵站B出口樓上）</small>
+        <strong>3583 2601</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="wrap">
+    <a class="on" href="#">主頁</a>
+    <a href="#about">本所介紹</a>
+    <a href="#svc">業務範圍</a>
+    <a href="#people">成員</a>
+    <a href="#news">法律資訊</a>
+    <a href="#links">連結</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+</div>
+
+<div class="wrap banner">
+  <div class="box">
+    <div class="txt">
+      <span class="tag">2007年於香港成立</span>
+      <h1>為客戶<em>迅速</em>及<em>有效</em>地<br>解決問題</h1>
+      <p class="sub">致力提供最具成本效益和可行的解決方案</p>
+      <ul>
+        <li>民事及刑事訴訟</li>
+        <li>公司及商業事務</li>
+        <li>中國委托公証人服務</li>
+        <li>國際公証人服務</li>
+        <li>遺囑及遺產承辦</li>
+        <li>房地產事務</li>
+      </ul>
+      <div class="btns">
+        <a class="b red" href="#contact">致電 3583 2601</a>
+        <a class="b line" href="#contact">網上查詢</a>
+      </div>
+    </div>
+    <div class="pic">
+      <span class="ph">團隊合照位置（待拍攝）</span>
+      <svg viewBox="0 0 520 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <rect width="520" height="300" fill="#d9d4ca"/>
+        <g fill="#b7b0a2">
+          <circle cx="110" cy="118" r="26"/><path d="M62 300v-90c0-30 22-48 48-48s48 18 48 48v90z"/>
+          <circle cx="205" cy="100" r="28"/><path d="M153 300v-104c0-32 24-52 52-52s52 20 52 52v104z"/>
+          <circle cx="310" cy="96" r="29"/><path d="M256 300v-106c0-34 25-54 54-54s54 20 54 54v106z"/>
+          <circle cx="410" cy="114" r="26"/><path d="M362 300v-92c0-30 22-48 48-48s48 18 48 48v92z"/>
+        </g>
+        <g fill="#a39b8c">
+          <circle cx="158" cy="170" r="27"/><path d="M108 300v-52c0-30 23-48 50-48s50 18 50 48v52z"/>
+          <circle cx="258" cy="164" r="29"/><path d="M205 300v-56c0-32 24-50 53-50s53 18 53 50v56z"/>
+          <circle cx="360" cy="170" r="27"/><path d="M310 300v-52c0-30 23-48 50-48s50 18 50 48v52z"/>
+        </g>
+      </svg>
+      <div class="cap">曾重瑜律師事務所　律師團隊</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap notice">
+  <div class="box"><b>【本所位置】</b><span>香港上環德輔道中257號錦甡大廈23樓，上環港鐵站B出口樓上，交通便利。歡迎致電預約。</span></div>
+</div>
+
+<div class="wrap">
+  <div class="tiles">
+    <a class="tile" href="#svc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 7l7-4 7 4M4 21h16M6 11l-2 6h4zM18 11l-2 6h4z"/></svg><div><h3>民事訴訟及調解爭議</h3><span>了解更多 ›</span></div></a>
+    <a class="tile" href="#svc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M10 21v-6h4v6"/></svg><div><h3>房地產事務</h3><span>了解更多 ›</span></div></a>
+    <a class="tile" href="#svc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="3.500"/><circle cx="16.500" cy="9" r="2.800"/><path d="M2 20c0-3.500 2.700-5.500 6-5.500s6 2 6 5.500M14.500 20c0-2.800 1-4.500 3-4.500s4 1.200 4 4.500"/></svg><div><h3>家事及婚姻程序</h3><span>了解更多 ›</span></div></a>
+    <a class="tile" href="#svc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2h9l3 3v17H6z"/><circle cx="12" cy="13" r="3"/><path d="M9 9h6"/></svg><div><h3>中國公証及國際公証</h3><span>了解更多 ›</span></div></a>
+  </div>
+</div>
+
+<div class="wrap cols">
+
+  <!-- Left -->
+  <div class="c-left" id="svc">
+    <div class="panel">
+      <div class="ptitle">業務範圍 <small>PRACTICE</small></div>
+      <ul class="svc">
+        <li><a href="#">中國公証服務</a></li>
+        <li><a href="#">婚姻監禮</a></li>
+        <li><a href="#">民事訴訟及調解爭議</a></li>
+        <li><a href="#">房地產事務</a></li>
+        <li><a href="#">公司及商業</a></li>
+        <li><a href="#">刑事訴訟</a></li>
+        <li><a href="#">僱傭、私隱及歧視</a></li>
+        <li><a href="#">家事及婚姻程序</a></li>
+        <li><a href="#">移民及入境簽證</a></li>
+        <li><a href="#">清盤及破產</a></li>
+        <li><a href="#">知識產權</a></li>
+        <li><a href="#">人身傷亡及僱員賠償</a></li>
+        <li><a href="#">國際公証服務</a></li>
+        <li><a href="#">信托</a></li>
+        <li><a href="#">遺囑及遺產承辦</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Middle -->
+  <div class="c-mid">
+    <div class="panel" id="about">
+      <div class="stitle"><h2>本所介紹</h2><a href="#">更多 ›</a></div>
+      <div class="pbody">
+        <p>曾重瑜律師事務所是由曾重瑜先生於2007年在香港成立。本事務所對客戶的承諾是為客戶迅速地及有效地解決問題。我們的目標是致力為客戶提供最具成本效益和可行的解決方案。</p>
+        <h4>本所客戶</h4>
+        <p>本事務所的客戶包括中國國有企業、跨國公司、具規模企業、意外受害人、獲法援人士。</p>
+        <h4>服務範圍</h4>
+        <p>本事務所的律師主要從事民事和刑事的訴訟，亦處理不具爭訟性的公司及商業事務、信託、遺囑和遺囑認證及房地產事宜。本所更有國際公証人及中國委托公証人，當客戶須要時，本所會提供相應的公証服務。</p>
+      </div>
+    </div>
+
+    <div class="panel" id="people">
+      <div class="stitle"><h2>成員</h2><a href="#">更多 ›</a></div>
+      <div class="pbody">
+        <div class="member">
+          <div class="ph"><svg viewBox="0 0 64 76" fill="currentColor"><circle cx="32" cy="24" r="14"/><path d="M6 76V62c0-14 12-22 26-22s26 8 26 22v14z"/></svg></div>
+          <div>
+            <h3>曾重瑜律師<span>主管律師</span></h3>
+            <p>1995年獲香港執業資格。英國倫敦大學法律碩士（優異）。中國委託公証人、國際公証人、婚姻監禮人。負責處理不同的訴訟案件，亦處理商業事務及遺產承辦的工作。</p>
+          </div>
+        </div>
+        <div class="member">
+          <div class="ph"><svg viewBox="0 0 64 76" fill="currentColor"><circle cx="32" cy="24" r="14"/><path d="M6 76V62c0-14 12-22 26-22s26 8 26 22v14z"/></svg></div>
+          <div>
+            <h3>關婉儀律師<span>高級律師</span></h3>
+            <p>1995年獲香港執業資格，1997年獲英國執業資格。英國倫敦大學法律碩士。主要負責處理具爭訟性及不具爭訟性的知識產權事務。</p>
+          </div>
+        </div>
+        <div class="others">
+          <span>陳維寧律師<b>顧問律師</b></span>
+          <span>李碧娟律師<b>顧問律師</b></span>
+          <span>甘皓婷律師<b>律師</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right -->
+  <div class="c-right">
+    <div class="panel" id="news">
+      <div class="stitle"><h2>法律資訊</h2><a href="#">更多 ›</a></div>
+      <div class="pbody">
+        <ul class="news">
+          <li><span class="d">示例</span>辦理中國委托公証文件須知</li>
+          <li><span class="d">示例</span>僱員賠償申索的常見問題</li>
+          <li><span class="d">示例</span>訂立遺囑及辦理遺產承辦程序簡介</li>
+          <li><span class="d">示例</span>樓宇買賣的基本法律程序</li>
+          <li><span class="d">示例</span>離婚程序及子女撫養權</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel contact" id="contact">
+      <div class="ptitle">聯絡我們 <small>CONTACT</small></div>
+      <div class="pbody">
+        <dl>
+          <dt>地址</dt><dd>香港上環德輔道中257號錦甡大廈23樓（上環港鐵站B出口樓上）</dd>
+          <dt>電話</dt><dd class="en">3583 2601</dd>
+          <dt>傳真</dt><dd class="en">3583 2604</dd>
+          <dt>電郵</dt><dd class="en">info@cytsang.com</dd>
+        </dl>
+        <div class="map">地圖位置（Google 地圖）</div>
+        <a class="b red" href="#">網上查詢表格</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="values">
+    <div class="val"><b>迅速</b><span>迅速地為客戶解決問題</span></div>
+    <div class="val"><b>有效</b><span>提供切實可行的解決方案</span></div>
+    <div class="val"><b>成本效益</b><span>最具成本效益的法律服務</span></div>
+  </div>
+</div>
+
+<div class="wrap quals">
+  <div class="panel">
+    <div class="stitle"><h2>專業資格</h2></div>
+    <div class="row">
+      <div class="q"><b>中國委托公証人</b><span>China-Appointed Attesting Officer</span></div>
+      <div class="q"><b>國際公証人</b><span>Notary Public</span></div>
+      <div class="q"><b>婚姻監禮人</b><span>Civil Celebrant of Marriages</span></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>曾重瑜律師事務所</h4>
+      <p>香港上環德輔道中257號錦甡大廈23樓<br>（上環港鐵站B出口樓上）</p>
+      <p>電話：3583 2601　傳真：3583 2604<br>電郵：info@cytsang.com</p>
+    </div>
+    <div>
+      <h4>網站導覽</h4>
+      <a href="#about">本所介紹</a><a href="#people">成員</a><a href="#svc">業務範圍</a><a href="#contact">聯絡我們</a>
+    </div>
+    <div id="links">
+      <h4>連結</h4>
+      <a href="#">香港律政司</a><a href="#">香港律師會</a>
+    </div>
+  </div>
+  <div class="copy">Copyright © 曾重瑜律師事務所 C.Y. Tsang &amp; Co., Solicitors. All Rights Reserved.</div>
+</footer>
+
+<div class="float">
+  <a href="#contact"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.600 10.800a15.100 15.100 0 0 0 6.600 6.600l2.200-2.200c.3-.3.700-.4 1-.2 1.100.4 2.300.6 3.600.6.600 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.600 21 3 13.400 3 4c0-.6.4-1 1-1h3.500c.6 0 1 .4 1 1 0 1.300.2 2.500.6 3.600.1.300 0 .7-.2 1z"/></svg>電話<br>查詢</a>
+  <a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>網上<br>查詢</a>
+  <a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.500 7-12a7 7 0 0 0-14 0c0 5.500 7 12 7 12z"/><circle cx="12" cy="9" r="2.500"/></svg>地址<br>地圖</a>
+</div>
+
+</body>
+</html>
