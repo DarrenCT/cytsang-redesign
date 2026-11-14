@@ -1,0 +1,23 @@
+---
+import { url } from '../data/site';
+
+interface Props {
+  heading?: string;
+  text?: string;
+}
+
+const {
+  heading = 'Facing a dispute, or planning ahead?',
+  text = "Speak with our team about your matter. We'll give you a clear, practical view of where you stand and what comes next.",
+} = Astro.props;
+---
+
+<section class="band">
+  <div class="wrap">
+    <div>
+      <h2>{heading}</h2>
+      <p>{text}</p>
+    </div>
+    <a href={url('/contact/')} class="btn light">Request a Consultation</a>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+---
+import { nav, site, url } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="en">{site.name}</div>
+      <small>{site.nameZh} · {site.address.oneLine}</small>
+      <small>
+        Tel <a href={site.telHref}>{site.tel}</a> · <a href={`mailto:${site.email}`}>{site.email}</a> · © {site.founded}–{year} {site.name}
+      </small>
+    </div>
+    <nav aria-label="Footer">
+      {nav.map((item) => <a href={url(item.path)}>{item.short}</a>)}
+    </nav>
+  </div>
+</footer>

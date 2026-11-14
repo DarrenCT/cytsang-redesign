@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import SubHero from '../components/SubHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { people } from '../data/people';
+
+const profiled = people.filter((p) => p.practice);
+const others = people.filter((p) => !p.practice);
+---
+
+<Base title="Our People" description="The solicitors of C.Y. Tsang & Co. — their qualifications, admissions, and areas of practice.">
+  <SubHero
+    eyebrow="Our People"
+    title="Experienced counsel, admitted across jurisdictions."
+    lede="Our solicitors' qualifications, admissions, and areas of practice."
+    crumbs={[{ label: 'Our People' }]}
+  />
+
+  <section class="block">
+    <div class="wrap">
+      {profiled.map((p) => (
+        <article class="profile" id={p.id}>
+          <div class="avatar">{p.initial}</div>
+          <div>
+            <h2>{p.name}</h2>
+            <div class="role">{p.role} · <span lang="zh-Hant">{p.nameZh}</span></div>
+            <p>{p.practice}</p>
+            <div class="facts">
+              {p.academic && (
+                <div>
+                  <h3>Education</h3>
+                  <ul>{p.academic.map((a) => <li>{a}</li>)}</ul>
+                </div>
+              )}
+              {p.admissions && (
+                <div>
+                  <h3>Admitted</h3>
+                  <ul>{p.admissions.map((a) => <li>{a}</li>)}</ul>
+                </div>
+              )}
+              {p.qualifications && (
+                <div>
+                  <h3>Appointments</h3>
+                  <ul>{p.qualifications.map((q) => <li>{q}</li>)}</ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">The Team</div>
+        <h2>Consultants and associates.</h2>
+      </div>
+      <div class="team">
+        {others.map((p) => (
+          <div class="person" id={p.id}>
+            <div class="avatar">{p.initial}</div>
+            <div>
+              <h3>{p.name}</h3>
+              <div class="role">{p.role} · <span lang="zh-Hant">{p.nameZh}</span></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

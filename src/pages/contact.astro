@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import SubHero from '../components/SubHero.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+import OfficeMap from '../components/OfficeMap.astro';
+---
+
+<Base title="Contact" description="Contact C.Y. Tsang & Co., Solicitors — 23/F, Kam Sang Building, 257 Des Voeux Road Central, Sheung Wan, Hong Kong.">
+  <SubHero
+    eyebrow="Contact"
+    title="Arrange a consultation."
+    lede="Call or email us with a brief outline of your matter and we'll arrange a time to meet. Our office sits directly above Sheung Wan MTR Station."
+    crumbs={[{ label: 'Contact' }]}
+  />
+  <section class="block">
+    <div class="wrap">
+      <div class="contact">
+        <ContactInfo />
+        <OfficeMap />
+      </div>
+    </div>
+  </section>
+</Base>

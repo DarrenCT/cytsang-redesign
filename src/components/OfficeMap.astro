@@ -1,0 +1,11 @@
+---
+import { mapsEmbed, mapsLink, site } from '../data/site';
+---
+
+<div class="map">
+  <iframe src={mapsEmbed} title="Map showing the firm's office at Kam Sang Building, Sheung Wan" loading="lazy" referrerpolicy="no-referrer"></iframe>
+  <div class="map-foot">
+    <span>{site.address.note}</span>
+    <a class="text-link" href={mapsLink} target="_blank" rel="noopener">Get directions &rarr;</a>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+---
+import { site } from '../data/site';
+---
+
+<div>
+  <div class="info-row">
+    <div class="k">Office</div>
+    <div class="v">
+      {site.address.lines.map((line) => <>{line}<br /></>)}
+      <span class="note">{site.address.note}</span>
+    </div>
+  </div>
+  <div class="info-row"><div class="k">Telephone</div><div class="v"><a href={site.telHref}>{site.tel}</a></div></div>
+  <div class="info-row"><div class="k">Fax</div><div class="v">{site.fax}</div></div>
+  <div class="info-row"><div class="k">Email</div><div class="v"><a href={`mailto:${site.email}`}>{site.email}</a></div></div>
+  <div class="contact-actions">
+    <a class="btn" href={site.telHref}>Call {site.tel}</a>
+    <a class="btn ghost" href={`mailto:${site.email}`}>Email the firm</a>
+  </div>
+</div>

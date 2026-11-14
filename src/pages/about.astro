@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import SubHero from '../components/SubHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site, url } from '../data/site';
+---
+
+<Base title="The Firm" description="About C.Y. Tsang & Co., Solicitors — a Hong Kong law firm founded in 2007 by Mr. C.Y. Tsang.">
+  <SubHero
+    eyebrow="The Firm"
+    title="A litigation practice built on clear, cost-effective advice."
+    lede="Founded in Hong Kong in 2007, we are committed to solving our clients' problems quickly, efficiently, and cost-effectively."
+    crumbs={[{ label: 'The Firm' }]}
+  />
+
+  <div class="wrap">
+    <div class="layout">
+      <div class="prose">
+        <h2>Profile</h2>
+        <p>
+          C.Y. Tsang &amp; Co., Solicitors was founded in Hong Kong in 2007 by Mr. C.Y. Tsang. From the beginning the firm has had one
+          commitment to its clients: to solve their problems quickly, efficiently, and cost-effectively.
+        </p>
+        <p>
+          That means giving a clear, honest view of where a client stands, setting out the workable options, and pursuing the one that best
+          serves the client's interests — whether in court or across the negotiating table.
+        </p>
+
+        <h2>Our clients</h2>
+        <p>
+          We act for PRC state-owned enterprises, multinational corporations, and leading corporations, and equally for individuals —
+          including accident victims and legally aided persons. Each matter receives the same care, whatever its size.
+        </p>
+
+        <h2>Our services</h2>
+        <p>
+          The firm's core focus is civil and criminal litigation. Alongside it, we advise on non-contentious corporate and commercial
+          matters, trusts, wills, probate, and conveyancing.
+        </p>
+        <p>
+          The firm also has a China-Appointed Attesting Officer and Notary Public, so documents for use in Mainland China or overseas can be
+          attested or notarised in-house.
+        </p>
+        <p><a href={url('/practice/')}>View all practice areas</a></p>
+      </div>
+
+      <aside class="side">
+        <div class="side-card">
+          <h3>At a glance</h3>
+          <ul class="related">
+            <li><div class="plain"><span>Established</span><span>{site.founded}, Hong Kong</span></div></li>
+            <li><div class="plain"><span>Languages</span><span>English · 繁體中文 · 简体中文</span></div></li>
+            <li><div class="plain"><span>Office</span><span>Sheung Wan, Hong Kong</span></div></li>
+          </ul>
+        </div>
+        <div class="side-card dark">
+          <h3>Speak to our team</h3>
+          <p>Tell us briefly about your matter and we'll arrange a consultation.</p>
+          <a href={url('/contact/')} class="btn light block">Request a Consultation</a>
+        </div>
+        <div class="side-card">
+          <h3>Useful links</h3>
+          <ul class="related">
+            <li><a href="https://www.doj.gov.hk" target="_blank" rel="noopener">Department of Justice <span class="ar">&rarr;</span></a></li>
+            <li><a href="https://www.hklawsoc.org.hk" target="_blank" rel="noopener">The Law Society of Hong Kong <span class="ar">&rarr;</span></a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <CtaBand />
+</Base>

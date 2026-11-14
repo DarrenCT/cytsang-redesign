@@ -1,0 +1,54 @@
+---
+import { nav, url } from '../data/site';
+
+const current = Astro.url.pathname;
+const isActive = (path: string) => current.startsWith(url(path));
+---
+
+<header class="site-header" data-header>
+  <div class="wrap bar">
+    <a class="brand" href={url('/')} aria-label="C.Y. Tsang & Co. — home">
+      <span class="en">C.Y. <b>Tsang</b> &amp; Co.</span>
+      <span class="zh">曾重瑜律師事務所</span>
+    </a>
+    <nav class="main" aria-label="Main">
+      {nav.map((item) => (
+        <a href={url(item.path)} class:list={{ active: isActive(item.path) }} aria-current={isActive(item.path) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <div class="bar-end">
+      <div class="lang desk" aria-label="Language">
+        <b>EN</b><span class="sep">|</span><span class="soon" title="Traditional Chinese — coming soon">繁</span><span class="sep">|</span><span class="soon" title="Simplified Chinese — coming soon">简</span>
+      </div>
+      <a href={url('/contact/')} class="btn">Request a Consultation</a>
+      <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav" data-menu-toggle>&#9776;</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+    {nav.map((item) => (
+      <a href={url(item.path)} class:list={{ active: isActive(item.path) }}>{item.label}</a>
+    ))}
+    <div class="cta"><a href={url('/contact/')} class="btn block">Request a Consultation</a></div>
+  </nav>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  if (header && toggle) {
+    const setOpen = (open: boolean) => {
+      header.toggleAttribute('data-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.innerHTML = open ? '&times;' : '&#9776;';
+    };
+    toggle.addEventListener('click', () => setOpen(!header.hasAttribute('data-open')));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
+    window.matchMedia('(min-width: 861px)').addEventListener('change', (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>

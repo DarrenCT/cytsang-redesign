@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import { url } from '../data/site';
+
+interface Props {
+  entry: CollectionEntry<'practice'>;
+}
+
+const { entry } = Astro.props;
+---
+
+<a class="pcard" href={url(`/practice/${entry.id}/`)}>
+  <Icon name={entry.data.icon} class="ic" />
+  <h3>{entry.data.title}</h3>
+  <p>{entry.data.summary}</p>
+</a>

@@ -1,0 +1,112 @@
+---
+import Base from '../layouts/Base.astro';
+import PracticeCard from '../components/PracticeCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+import OfficeMap from '../components/OfficeMap.astro';
+import { getPracticeAreas } from '../data/practice';
+import { featuredPeople } from '../data/people';
+import { url } from '../data/site';
+
+const areas = await getPracticeAreas();
+const featured = areas.filter((a) => a.data.featured);
+const others = areas.filter((a) => !a.data.featured);
+---
+
+<Base>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Solicitors · Hong Kong · Since 2007</div>
+      <h1>Considered legal counsel for complex disputes.</h1>
+      <p class="lede">
+        C.Y. Tsang &amp; Co. represents corporations, institutions, and individuals across Hong Kong's courts — resolving matters quickly,
+        efficiently, and with a clear path to the most workable outcome.
+      </p>
+      <div class="cta">
+        <a href={url('/contact/')} class="btn light">Request a Consultation</a>
+        <a href={url('/practice/')} class="btn light quiet">Explore Our Practice</a>
+      </div>
+      <div class="est">
+        <div><b>2007</b>Established in Hong Kong</div>
+        <div><b>{areas.length}</b>Areas of practice</div>
+        <div><b>3</b>Languages served · EN · 繁 · 简</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">The Firm</div>
+        <h2>A litigation practice built on clear, cost-effective advice.</h2>
+        <p>
+          Founded in Hong Kong in 2007, C.Y. Tsang &amp; Co. acts for PRC state-owned enterprises, multinational corporations, and individuals
+          alike — from complex commercial disputes to personal injury and criminal matters. Our commitment is simple: solve the problem, and
+          solve it well.
+        </p>
+        <p><a class="text-link" href={url('/about/')}>More about the firm &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="practice">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Practice Areas</div>
+        <h2>Where we act for our clients.</h2>
+        <p>Our lawyers handle both contentious and non-contentious matters across a broad range of disciplines.</p>
+      </div>
+      <div class="grid">
+        {featured.map((entry) => <PracticeCard entry={entry} />)}
+      </div>
+      <p class="more-areas">
+        Also advising on{' '}
+        {others.map((entry, i) => (
+          <>
+            {i > 0 && (i === others.length - 1 ? ', and ' : ', ')}
+            <a href={url(`/practice/${entry.id}/`)}>{entry.data.title.toLowerCase()}</a>
+          </>
+        ))}.
+        <a class="text-link" href={url('/practice/')}>View all practice areas &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="block" id="people">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Our People</div>
+        <h2>Experienced counsel, admitted across jurisdictions.</h2>
+      </div>
+      <div class="people">
+        {featuredPeople.map((p) => (
+          <div class="person">
+            <div class="avatar">{p.initial}</div>
+            <div>
+              <h3>{p.name}</h3>
+              <div class="role">{p.role}</div>
+              <p>{p.summary}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="people-more"><a class="text-link" href={url('/people/')}>Meet the full team &rarr;</a></p>
+    </div>
+  </section>
+
+  <CtaBand />
+
+  <section class="block alt" id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Contact</div>
+        <h2>Arrange a consultation.</h2>
+        <p>Our office sits directly above Sheung Wan MTR Station, in the heart of Central.</p>
+      </div>
+      <div class="contact">
+        <ContactInfo />
+        <OfficeMap />
+      </div>
+    </div>
+  </section>
+</Base>

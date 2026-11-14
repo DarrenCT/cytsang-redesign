@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import SubHero from '../../components/SubHero.astro';
+import PracticeCard from '../../components/PracticeCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getPracticeAreas } from '../../data/practice';
+
+const areas = await getPracticeAreas();
+---
+
+<Base
+  title="Practice Areas"
+  description="The practice areas of C.Y. Tsang & Co., Solicitors — civil and criminal litigation, corporate and commercial, family, intellectual property, property, probate, and notarial services."
+>
+  <SubHero
+    eyebrow="Practice Areas"
+    title="Where we act for our clients."
+    lede="Our lawyers handle both contentious and non-contentious matters across a broad range of disciplines."
+    crumbs={[{ label: 'Practice Areas' }]}
+  />
+  <section class="block">
+    <div class="wrap">
+      <div class="grid">
+        {areas.map((entry) => <PracticeCard entry={entry} />)}
+      </div>
+    </div>
+  </section>
+  <CtaBand heading="Not sure which area your matter falls under?" text="Tell us briefly what has happened and we'll point you to the right person." />
+</Base>

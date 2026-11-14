@@ -1,0 +1,117 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import SubHero from '../../components/SubHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { approach, getPracticeAreas, type PracticeEntry } from '../../data/practice';
+import { getPerson } from '../../data/people';
+import { url } from '../../data/site';
+
+export async function getStaticPaths() {
+  const areas = await getPracticeAreas();
+  return areas.map((entry) => ({ params: { slug: entry.id }, props: { entry, areas } }));
+}
+
+interface Props {
+  entry: PracticeEntry;
+  areas: PracticeEntry[];
+}
+
+const { entry, areas } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+
+const steps = approach[data.kind];
+const contacts = data.contacts.map((id) => {
+  const person = getPerson(id);
+  if (!person) throw new Error(`${entry.id}: unknown contact "${id}"`);
+  return person;
+});
+const related = data.related.map((slug) => {
+  const match = areas.find((a) => a.id === slug);
+  if (!match) throw new Error(`${entry.id}: unknown related practice area "${slug}"`);
+  return match;
+});
+---
+
+<Base title={data.title} description={data.lede}>
+  <SubHero
+    eyebrow="Practice Area"
+    title={data.title}
+    lede={data.lede}
+    crumbs={[{ label: 'Practice Areas', path: '/practice/' }, { label: data.title }]}
+  />
+
+  <div class="wrap">
+    <div class="layout">
+      <div class="prose">
+        <h2>Overview</h2>
+        <Content />
+
+        <h2>Matters we handle</h2>
+        <ul class="handle">
+          {data.matters.map((m) => <li>{m}</li>)}
+        </ul>
+
+        <h2>Our approach</h2>
+        <div class="steps">
+          {steps.map((s, i) => (
+            <div class="step">
+              <div class="n">{String(i + 1).padStart(2, '0')}</div>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))}
+        </div>
+
+        {data.faqs.length > 0 && (
+          <>
+            <h2>Common questions</h2>
+            <div class="faq">
+              {data.faqs.map((f, i) => (
+                <details open={i === 0}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      <aside class="side">
+        <div class="side-card dark">
+          <h3>Speak to our team</h3>
+          <p>Tell us briefly about your matter and we'll arrange a consultation.</p>
+          <a href={url('/contact/')} class="btn light block">Request a Consultation</a>
+        </div>
+        <div class="side-card">
+          <h3>Key contacts</h3>
+          <div class="contacts">
+            {contacts.map((p) => (
+              <a class="ct" href={url(`/people/#${p.id}`)}>
+                <div class="av">{p.initial}</div>
+                <div>
+                  <div class="nm">{p.name}</div>
+                  <div class="rl">{p.role}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+        <div class="side-card">
+          <h3>Related practice areas</h3>
+          <ul class="related">
+            {related.map((r) => (
+              <li>
+                <a href={url(`/practice/${r.id}/`)}>{r.data.title} <span class="ar">&rarr;</span></a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <CtaBand heading={data.cta?.heading} text={data.cta?.text} />
+</Base>

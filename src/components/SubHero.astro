@@ -1,0 +1,30 @@
+---
+import { url } from '../data/site';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede?: string;
+  /** Breadcrumb trail after "Home". The last item is the current page. */
+  crumbs?: { label: string; path?: string }[];
+}
+
+const { eyebrow, title, lede, crumbs = [] } = Astro.props;
+---
+
+<section class="subhero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href={url('/')}>Home</a>
+      {crumbs.map((c) => (
+        <>
+          <span class="sep">/</span>
+          {c.path ? <a href={url(c.path)}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
+        </>
+      ))}
+    </nav>
+    <div class="eyebrow">{eyebrow}</div>
+    <h1>{title}</h1>
+    {lede && <p>{lede}</p>}
+  </div>
+</section>
